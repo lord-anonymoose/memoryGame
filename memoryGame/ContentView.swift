@@ -28,18 +28,57 @@ struct Card: View {
     }
     
     func matched() {
-        self.body.foregroundColor(.white)
     }
     
     var body: some View {
-        Text(content)
+        ZStack {
+            RoundedRectangle(cornerRadius: 25, style: .continuous)
+                            .fill(Color("cardColor"))
+            Text(content)
+                .font(.title)
+        }
+        .frame(width: 90, height: 90)
     }
 }
 
 struct memoryGame: View {
-    var chosenCards: Int = 0
+    @State var chosenCards: Int = 0
+    @State var turns: Int = 0
+    @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"].shuffled()
+    
+    func startGame() {
+        self.model = model.shuffled()
+        self.chosenCards = 0
+        self.turns = 0
+    }
+    
     var body: some View {
-        Card(content: "🎅🏻")
+        VStack {
+            HStack {
+                Card(content: model[0])
+                Card(content: model[1])
+                Card(content: model[2])
+
+            }
+            HStack {
+                Card(content: model[3])
+                Card(content: model[4])
+                Card(content: model[5])
+            }
+            HStack {
+                Card(content: model[6])
+                Card(content: model[7])
+                Card(content: model[8])
+            }
+            HStack {
+                Card(content: model[9])
+                Card(content: model[10])
+                Card(content: model[11])
+            }
+            Button (action: { startGame()}) {
+                Text ("Start game")
+            }
+        }
     }
 }
 //This is a minor change
