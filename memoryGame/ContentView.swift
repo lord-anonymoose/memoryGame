@@ -42,7 +42,7 @@ struct memoryGame: View {
         Card(content: "🎅🏻")
     }
 }
-
+//This is a minor change
 struct ContentView: View {
     var body: some View {
         Color("backgroundColor").edgesIgnoringSafeArea(.all)
