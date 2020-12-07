@@ -19,11 +19,12 @@ import SwiftUI
 }*/
 
 struct Card: View {
+    let cover = "❔"
     var content: String
     var isTapped: Bool = false
     var isMatched: Bool = false
     
-    func tap() {
+    func tapped() {
         
     }
     
@@ -35,7 +36,7 @@ struct Card: View {
             RoundedRectangle(cornerRadius: 25, style: .continuous)
                             .fill(Color("cardColor"))
             Text(content)
-                .font(.title)
+                .font(.system(size: 50))
         }
         .frame(width: 90, height: 90)
     }
@@ -54,6 +55,7 @@ struct memoryGame: View {
     
     var body: some View {
         VStack {
+            Text ("Score: ")
             HStack {
                 Card(content: model[0])
                 Card(content: model[1])

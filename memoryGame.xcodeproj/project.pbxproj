@@ -13,6 +13,13 @@
 		176CB668257D66AE00FF7B2E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 176CB667257D66AE00FF7B2E /* Preview Assets.xcassets */; };
 		176CB673257D66AF00FF7B2E /* memoryGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176CB672257D66AF00FF7B2E /* memoryGameTests.swift */; };
 		176CB67E257D66AF00FF7B2E /* memoryGameUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 176CB67D257D66AF00FF7B2E /* memoryGameUITests.swift */; };
+		17A38B68257EC3A100280080 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A38B67257EC3A100280080 /* WidgetKit.framework */; };
+		17A38B6A257EC3A100280080 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17A38B69257EC3A100280080 /* SwiftUI.framework */; };
+		17A38B6D257EC3A100280080 /* countdownWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17A38B6C257EC3A100280080 /* countdownWidget.swift */; };
+		17A38B70257EC3AA00280080 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 17A38B6F257EC3AA00280080 /* Assets.xcassets */; };
+		17A38B72257EC3AA00280080 /* countdownWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 17A38B6E257EC3A200280080 /* countdownWidget.intentdefinition */; };
+		17A38B73257EC3AA00280080 /* countdownWidget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 17A38B6E257EC3A200280080 /* countdownWidget.intentdefinition */; };
+		17A38B76257EC3AA00280080 /* countdownWidgetExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 17A38B65257EC3A100280080 /* countdownWidgetExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +37,28 @@
 			remoteGlobalIDString = 176CB65C257D66AC00FF7B2E;
 			remoteInfo = memoryGame;
 		};
+		17A38B74257EC3AA00280080 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 176CB655257D66AC00FF7B2E /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 17A38B64257EC3A100280080;
+			remoteInfo = countdownWidgetExtension;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		17A38B77257EC3AA00280080 /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				17A38B76257EC3AA00280080 /* countdownWidgetExtension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		176CB65D257D66AC00FF7B2E /* memoryGame.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = memoryGame.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -45,6 +73,13 @@
 		176CB679257D66AF00FF7B2E /* memoryGameUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = memoryGameUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		176CB67D257D66AF00FF7B2E /* memoryGameUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = memoryGameUITests.swift; sourceTree = "<group>"; };
 		176CB67F257D66AF00FF7B2E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		17A38B65257EC3A100280080 /* countdownWidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = countdownWidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		17A38B67257EC3A100280080 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
+		17A38B69257EC3A100280080 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
+		17A38B6C257EC3A100280080 /* countdownWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = countdownWidget.swift; sourceTree = "<group>"; };
+		17A38B6E257EC3A200280080 /* countdownWidget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = countdownWidget.intentdefinition; sourceTree = "<group>"; };
+		17A38B6F257EC3AA00280080 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		17A38B71257EC3AA00280080 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +104,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17A38B62257EC3A100280080 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17A38B6A257EC3A100280080 /* SwiftUI.framework in Frameworks */,
+				17A38B68257EC3A100280080 /* WidgetKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -78,6 +122,8 @@
 				176CB65F257D66AC00FF7B2E /* memoryGame */,
 				176CB671257D66AF00FF7B2E /* memoryGameTests */,
 				176CB67C257D66AF00FF7B2E /* memoryGameUITests */,
+				17A38B6B257EC3A100280080 /* countdownWidget */,
+				17A38B66257EC3A100280080 /* Frameworks */,
 				176CB65E257D66AC00FF7B2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -88,6 +134,7 @@
 				176CB65D257D66AC00FF7B2E /* memoryGame.app */,
 				176CB66E257D66AF00FF7B2E /* memoryGameTests.xctest */,
 				176CB679257D66AF00FF7B2E /* memoryGameUITests.xctest */,
+				17A38B65257EC3A100280080 /* countdownWidgetExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -130,6 +177,26 @@
 			path = memoryGameUITests;
 			sourceTree = "<group>";
 		};
+		17A38B66257EC3A100280080 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				17A38B67257EC3A100280080 /* WidgetKit.framework */,
+				17A38B69257EC3A100280080 /* SwiftUI.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		17A38B6B257EC3A100280080 /* countdownWidget */ = {
+			isa = PBXGroup;
+			children = (
+				17A38B6C257EC3A100280080 /* countdownWidget.swift */,
+				17A38B6E257EC3A200280080 /* countdownWidget.intentdefinition */,
+				17A38B6F257EC3AA00280080 /* Assets.xcassets */,
+				17A38B71257EC3AA00280080 /* Info.plist */,
+			);
+			path = countdownWidget;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -140,10 +207,12 @@
 				176CB659257D66AC00FF7B2E /* Sources */,
 				176CB65A257D66AC00FF7B2E /* Frameworks */,
 				176CB65B257D66AC00FF7B2E /* Resources */,
+				17A38B77257EC3AA00280080 /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				17A38B75257EC3AA00280080 /* PBXTargetDependency */,
 			);
 			name = memoryGame;
 			productName = memoryGame;
@@ -186,6 +255,23 @@
 			productReference = 176CB679257D66AF00FF7B2E /* memoryGameUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
+		17A38B64257EC3A100280080 /* countdownWidgetExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 17A38B7A257EC3AA00280080 /* Build configuration list for PBXNativeTarget "countdownWidgetExtension" */;
+			buildPhases = (
+				17A38B61257EC3A100280080 /* Sources */,
+				17A38B62257EC3A100280080 /* Frameworks */,
+				17A38B63257EC3A100280080 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = countdownWidgetExtension;
+			productName = countdownWidgetExtension;
+			productReference = 17A38B65257EC3A100280080 /* countdownWidgetExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -206,6 +292,9 @@
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = 176CB65C257D66AC00FF7B2E;
 					};
+					17A38B64257EC3A100280080 = {
+						CreatedOnToolsVersion = 12.2;
+					};
 				};
 			};
 			buildConfigurationList = 176CB658257D66AC00FF7B2E /* Build configuration list for PBXProject "memoryGame" */;
@@ -224,6 +313,7 @@
 				176CB65C257D66AC00FF7B2E /* memoryGame */,
 				176CB66D257D66AF00FF7B2E /* memoryGameTests */,
 				176CB678257D66AF00FF7B2E /* memoryGameUITests */,
+				17A38B64257EC3A100280080 /* countdownWidgetExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -252,6 +342,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17A38B63257EC3A100280080 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17A38B70257EC3AA00280080 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -259,6 +357,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				17A38B73257EC3AA00280080 /* countdownWidget.intentdefinition in Sources */,
 				176CB663257D66AC00FF7B2E /* ContentView.swift in Sources */,
 				176CB661257D66AC00FF7B2E /* memoryGameApp.swift in Sources */,
 			);
@@ -280,6 +379,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		17A38B61257EC3A100280080 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				17A38B72257EC3AA00280080 /* countdownWidget.intentdefinition in Sources */,
+				17A38B6D257EC3A100280080 /* countdownWidget.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -292,6 +400,11 @@
 			isa = PBXTargetDependency;
 			target = 176CB65C257D66AC00FF7B2E /* memoryGame */;
 			targetProxy = 176CB67A257D66AF00FF7B2E /* PBXContainerItemProxy */;
+		};
+		17A38B75257EC3AA00280080 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 17A38B64257EC3A100280080 /* countdownWidgetExtension */;
+			targetProxy = 17A38B74257EC3AA00280080 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -415,6 +528,7 @@
 		176CB683257D66AF00FF7B2E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -436,6 +550,7 @@
 		176CB684257D66AF00FF7B2E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -534,6 +649,46 @@
 			};
 			name = Release;
 		};
+		17A38B78257EC3AA00280080 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = countdownWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = philipp.memoryGame.countdownWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		17A38B79257EC3AA00280080 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = countdownWidget/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = philipp.memoryGame.countdownWidget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -569,6 +724,15 @@
 			buildConfigurations = (
 				176CB689257D66AF00FF7B2E /* Debug */,
 				176CB68A257D66AF00FF7B2E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		17A38B7A257EC3AA00280080 /* Build configuration list for PBXNativeTarget "countdownWidgetExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				17A38B78257EC3AA00280080 /* Debug */,
+				17A38B79257EC3AA00280080 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
