@@ -47,22 +47,38 @@ struct SimpleEntry: TimelineEntry {
 
 struct countdownWidgetEntryView : View {
     var entry: Provider.Entry
-    
+    let xmasComponents = DateComponents(year: 2020, month: 12, day: 25)
+    let xmas = Calendar.current.date(from: DateComponents(year: 2020, month: 12, day: 25))!
+    let ny = Calendar.current.date(from: DateComponents(year: 2021, month: 1, day: 1))!
+    let currentDate = Date()
+
     let dateFormatter = DateFormatter()
     var body: some View {
-        
-        HStack {
-            VStack {
-                Text("Christmas:")
+        Color("WidgetBackground")
+            .overlay (
+            HStack {
+                VStack {
+                    Text("🎅🏻")
+                        .font(.system(size: 40))
+                    VStack {
+                        Text("X-mas:")
+                        Text("\(Calendar.current.dateComponents([.day], from: currentDate, to: xmas).day!)")
+                    }
+                    .font(.system(size: 16))
+                }
+                VStack {
+                    Text("🎄")
+                        .font(.system(size: 40))
+                    VStack {
+                        Text("New Year:")
+                        Text("\(Calendar.current.dateComponents([.day], from: currentDate, to: ny).day!)")
+                    }
+                    .font(.system(size: 16))
+                }
             }
-            VStack {
-                Text("New Year:")
-                
-            }
-        }
+        )
     }
 }
-
 @main
 struct countdownWidget: Widget {
     let kind: String = "countdownWidget"
