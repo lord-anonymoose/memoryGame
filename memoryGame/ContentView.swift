@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+var oneIsOpen = false
+
 struct memoryGame: View {
     @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"].shuffled()
+    @State var counter = 0
     
     @State var myCard = [card](repeating: card(value: ""), count: 12)
     
@@ -16,13 +19,17 @@ struct memoryGame: View {
         var value: String //Hidden symbol
         var content: String = "❔" //Shown symbol
         var isTapped:Bool = false
-        
+        /*
         mutating func cardTap() {
+            if (oneIsOpen) {
+                hideAll()
+            }
             if !(self.isTapped) {
                 self.content = self.value
+                oneIsOpen = true
             }
         }
-        
+        */
         var body: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -35,8 +42,19 @@ struct memoryGame: View {
         }
     }
     
+     func cardTap(number: Int) {
+        if (oneIsOpen) {
+            hideAll()
+        }
+        if !(myCard[number].isTapped) {
+            myCard[number].content = myCard[number].value
+            oneIsOpen = !oneIsOpen
+        }
+    }
+    
     func startGame() {
         for i in 0...11 {
+            counter = 0
             model = model.shuffled()
             myCard[i].content = "❔"
             myCard[i].isTapped = false
@@ -44,54 +62,61 @@ struct memoryGame: View {
         }
     }
     
+    func hideAll () {
+        for i in 0...11 {
+            myCard[i].content = "❔"
+        }
+    }
+        
     
     var body: some View {
         VStack {
+            Text ("You've made \(counter) taps so far.")
             HStack {
                 myCard[0] .onTapGesture {
-                    myCard[0].cardTap()
+                    cardTap(number: 0)
                 }
                 myCard[1] .onTapGesture {
-                    myCard[1].cardTap()
+                    cardTap(number: 1)
                 }
                 myCard[2] .onTapGesture {
-                    myCard[2].cardTap()
+                    cardTap(number: 2)
                 }
             }
             
             HStack {
                 myCard[3] .onTapGesture {
-                    myCard[3].cardTap()
+                    cardTap(number: 3)
                 }
                 myCard[4] .onTapGesture {
-                    myCard[4].cardTap()
+                    cardTap(number: 4)
                 }
                 myCard[5] .onTapGesture {
-                    myCard[5].cardTap()
+                    cardTap(number: 5)
                 }
             }
             
             HStack {
                 myCard[6] .onTapGesture {
-                    myCard[6].cardTap()
+                    cardTap(number: 6)
                 }
                 myCard[7] .onTapGesture {
-                    myCard[7].cardTap()
+                    cardTap(number: 7)
                 }
                 myCard[8] .onTapGesture {
-                    myCard[8].cardTap()
+                    cardTap(number: 8)
                 }
             }
             
             HStack {
                 myCard[9] .onTapGesture {
-                    myCard[9].cardTap()
+                    cardTap(number: 9)
                 }
                 myCard[10] .onTapGesture {
-                    myCard[10].cardTap()
+                    cardTap(number: 10)
                 }
                 myCard[11] .onTapGesture {
-                    myCard[11].cardTap()
+                    cardTap(number: 11)
                 }
             }
             
