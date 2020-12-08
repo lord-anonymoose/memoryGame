@@ -7,56 +7,45 @@
 
 import SwiftUI
 
-/*struct Card (id: Int) do {
-    var body: some View {
-        var isFaceUp: Bool = false
-        var isMatched: Bool = false
-        var content: String
-        Rectangle()
-        .fill(Color("cardColor"))
-        .frame(width:75, height: 75)
-    }
-}*/
-
-struct Card: View {
-    var value: String
-    @State var content: String = "❔"
-    @State var isTapped: Bool = false
-    var isMatched: Bool = false
-    
-    func tapped() {
-        if (isTapped) {
-            content = value
-            isTapped = false
-        } else {
-            content = "❔"
-            isTapped = true
-        }
-    }
-    
-    func matched() {
-    }
-    
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 25, style: .continuous)
-                            .fill(Color("cardColor"))
-            Text(content)
-                .font(.system(size: 50))
-        }
-        .frame(width: 90, height: 90)
-        .onTapGesture {
-            tapped()
-        }
-    }
-    
-}
-
 struct memoryGame: View {
+    
+    struct Card: View {
+        var value: String
+        @State var content: String = "❔"
+        @State var isTapped: Bool = false
+        var isMatched: Bool = false
+        
+        func tapped() {
+            if (isTapped) {
+                content = value
+                isTapped = false
+            } else {
+                content = "❔"
+                isTapped = true
+            }
+        }
+        
+        func matched() {
+        }
+        
+        var body: some View {
+            ZStack {
+                RoundedRectangle(cornerRadius: 25, style: .continuous)
+                                .fill(Color("cardColor"))
+                Text(content)
+                    .font(.system(size: 50))
+            }
+            .frame(width: 90, height: 90)
+            .onTapGesture {
+                tapped()
+            }
+        }
+        
+    }
+    
     @State var chosenCards: Int = 0
     @State var turns: Int = 0
-    @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"].shuffled()
-    
+    @State private var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"].shuffled()
     
     func startGame() {
         self.model = model.shuffled()
@@ -69,9 +58,6 @@ struct memoryGame: View {
             Text ("Score: ")
             HStack {
                 Card(value: model[0])
-                    .onTapGesture {
-                        print("Card tapped")
-                    }
                 Card(value: model[1])
                 Card(value: model[2])
 
