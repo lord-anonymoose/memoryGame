@@ -19,13 +19,19 @@ import SwiftUI
 }*/
 
 struct Card: View {
-    let cover = "❔"
-    var content: String
-    var isTapped: Bool = false
+    var value: String
+    @State var content: String = "❔"
+    @State var isTapped: Bool = false
     var isMatched: Bool = false
     
     func tapped() {
-        
+        if (isTapped) {
+            content = value
+            isTapped = false
+        } else {
+            content = "❔"
+            isTapped = true
+        }
     }
     
     func matched() {
@@ -39,13 +45,18 @@ struct Card: View {
                 .font(.system(size: 50))
         }
         .frame(width: 90, height: 90)
+        .onTapGesture {
+            tapped()
+        }
     }
+    
 }
 
 struct memoryGame: View {
     @State var chosenCards: Int = 0
     @State var turns: Int = 0
     @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"].shuffled()
+    
     
     func startGame() {
         self.model = model.shuffled()
@@ -57,25 +68,28 @@ struct memoryGame: View {
         VStack {
             Text ("Score: ")
             HStack {
-                Card(content: model[0])
-                Card(content: model[1])
-                Card(content: model[2])
+                Card(value: model[0])
+                    .onTapGesture {
+                        print("Card tapped")
+                    }
+                Card(value: model[1])
+                Card(value: model[2])
 
             }
             HStack {
-                Card(content: model[3])
-                Card(content: model[4])
-                Card(content: model[5])
+                Card(value: model[3])
+                Card(value: model[4])
+                Card(value: model[5])
             }
             HStack {
-                Card(content: model[6])
-                Card(content: model[7])
-                Card(content: model[8])
+                Card(value: model[6])
+                Card(value: model[7])
+                Card(value: model[8])
             }
             HStack {
-                Card(content: model[9])
-                Card(content: model[10])
-                Card(content: model[11])
+                Card(value: model[9])
+                Card(value: model[10])
+                Card(value: model[11])
             }
             Button (action: { startGame()}) {
                 Text ("Start game")

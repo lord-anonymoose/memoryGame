@@ -10,9 +10,6 @@ import SwiftUI
 import Intents
 
 
-
-
-
 struct Provider: IntentTimelineProvider {
     func placeholder(in context: Context) -> SimpleEntry {
         SimpleEntry(date: Date(), configuration: ConfigurationIntent())
