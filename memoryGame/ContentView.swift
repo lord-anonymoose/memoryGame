@@ -7,18 +7,16 @@
 
 import SwiftUI
 
-var oneIsOpen = false
-
-var myAlert: String = ""
+var cardsOpened: Int = 0
 
 struct memoryGame: View {
+    
     @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"]
-    @State var counter = 0
+    @State var counter: Int = 0
+    
     @State var matchedCards = [Int]()
     
-    @State private var showingAlert = false
-
-    
+    @State var currentCard: String = ""
     
     @State var myCard = [card](repeating: card(value: ""), count: 12)
     
@@ -26,17 +24,7 @@ struct memoryGame: View {
         var value: String //Hidden symbol
         var content: String = "❔" //Shown symbol
         var isTapped:Bool = false
-        /*
-        mutating func cardTap() {
-            if (oneIsOpen) {
-                hideAll()
-            }
-            if !(self.isTapped) {
-                self.content = self.value
-                oneIsOpen = true
-            }
-        }
-        */
+
         var body: some View {
             ZStack {
                 RoundedRectangle(cornerRadius: 25, style: .continuous)
@@ -45,39 +33,39 @@ struct memoryGame: View {
                     .font(.system(size:50))
             }
             .frame(width: 90, height: 90)
-            
         }
     }
     
-     func cardTap(number: Int) {
-        if (oneIsOpen) {
-            //hideAll()
-        }
-        //if !(myCard[number].isTapped) {
+    func cardTap(number: Int) {
+        if (cardsOpened == 2) {
+            hideAll()
+            cardsOpened = 1
             myCard[number].content = myCard[number].value
-            oneIsOpen = !oneIsOpen
-        //§}
-    }
-    
-    func startGame() {
-        model = model.shuffled()
-        for i in 0...11 {
-            counter = 0
-            myCard[i].content = "❔"
-            myCard[i].isTapped = false
-            myCard[i].value = model[i]
-            oneIsOpen = false
-            myAlert += model[i]
+        } else {
+            cardsOpened += 1
+            myCard[number].content = myCard[number].value
         }
     }
     
     func hideAll () {
+        cardsOpened = 0
         for i in 0...11 {
             myCard[i].content = "❔"
         }
     }
-        
-
+    
+    func startGame() {
+        model = model.shuffled()
+        hideAll()
+        cardsOpened = 0
+        counter = 0
+        for i in 0...11 {
+            myCard[i].content = "❔"
+            myCard[i].isTapped = false
+            myCard[i].value = model[i]
+        }
+    }
+    
     var body: some View {
         
         VStack {
@@ -133,16 +121,6 @@ struct memoryGame: View {
             Button (action: { startGame() }) {
                 Text("Start game")
             }
-            
-            Button(action: {
-                        self.showingAlert = true
-                    }) {
-                        Text("Show Alert")
-                    }
-                    .alert(isPresented: $showingAlert) {
-                        Alert(title: Text("Important message"), message: Text(myAlert), dismissButton: .default(Text("Got it!")))
-                    }
-            
         }
     }
 }
