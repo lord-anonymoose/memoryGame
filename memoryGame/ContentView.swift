@@ -7,18 +7,21 @@
 
 import SwiftUI
 
-var cardsOpened: Int = 0
 
 struct memoryGame: View {
     
     @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"]
-    @State var counter: Int = 0
+    @State var tapCounter: Int = 0
     
     @State var matchedCards = [Int]()
     
     @State var currentCard: String = ""
     
+    @State var matched = false
+    
     @State var myCard = [card](repeating: card(value: ""), count: 12)
+    
+    @State var cardsOpened: Int = 0
     
     struct card: View {
         var value: String //Hidden symbol
@@ -37,13 +40,21 @@ struct memoryGame: View {
     }
     
     func cardTap(number: Int) {
-        if (cardsOpened == 2) {
+        cardsOpened += 1
+        
+        if (cardsOpened == 1) {
+            currentCard = myCard[number].value
+            myCard[number].content = myCard[number].value
+        } else if (cardsOpened == 2) {
+            if (currentCard == myCard[number].value)
+            {
+                myCard[number].content = myCard[number].value
+            }
+        } else if (cardsOpened == 3) {
+            currentCard = myCard[number].value
             hideAll()
-            cardsOpened = 1
             myCard[number].content = myCard[number].value
-        } else {
             cardsOpened += 1
-            myCard[number].content = myCard[number].value
         }
     }
     
@@ -58,7 +69,7 @@ struct memoryGame: View {
         model = model.shuffled()
         hideAll()
         cardsOpened = 0
-        counter = 0
+        tapCounter = 0
         for i in 0...11 {
             myCard[i].content = "❔"
             myCard[i].isTapped = false
@@ -69,7 +80,7 @@ struct memoryGame: View {
     var body: some View {
         
         VStack {
-            Text ("You've made \(counter) taps so far.")
+            Text ("You've made \(tapCounter) taps so far.")
             HStack {
                 myCard[0] .onTapGesture {
                     cardTap(number: 0)
@@ -122,6 +133,11 @@ struct memoryGame: View {
                 Text("Start game")
             }
         }
+        .alert(isPresented: $matched, content: {
+                    Alert(title: Text("Title"),
+                          message: Text("Message"),
+                          dismissButton: .default(Text(currentCard)) { print("do something") })
+        })
     }
 }
 
