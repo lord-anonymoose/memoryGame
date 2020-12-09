@@ -9,9 +9,16 @@ import SwiftUI
 
 var oneIsOpen = false
 
+var myAlert: String = ""
+
 struct memoryGame: View {
-    @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"].shuffled()
+    @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"]
     @State var counter = 0
+    @State var matchedCards = [Int]()
+    
+    @State private var showingAlert = false
+
+    
     
     @State var myCard = [card](repeating: card(value: ""), count: 12)
     
@@ -44,21 +51,23 @@ struct memoryGame: View {
     
      func cardTap(number: Int) {
         if (oneIsOpen) {
-            hideAll()
+            //hideAll()
         }
-        if !(myCard[number].isTapped) {
+        //if !(myCard[number].isTapped) {
             myCard[number].content = myCard[number].value
             oneIsOpen = !oneIsOpen
-        }
+        //§}
     }
     
     func startGame() {
+        model = model.shuffled()
         for i in 0...11 {
             counter = 0
-            model = model.shuffled()
             myCard[i].content = "❔"
             myCard[i].isTapped = false
             myCard[i].value = model[i]
+            oneIsOpen = false
+            myAlert += model[i]
         }
     }
     
@@ -68,8 +77,9 @@ struct memoryGame: View {
         }
     }
         
-    
+
     var body: some View {
+        
         VStack {
             Text ("You've made \(counter) taps so far.")
             HStack {
@@ -123,6 +133,15 @@ struct memoryGame: View {
             Button (action: { startGame() }) {
                 Text("Start game")
             }
+            
+            Button(action: {
+                        self.showingAlert = true
+                    }) {
+                        Text("Show Alert")
+                    }
+                    .alert(isPresented: $showingAlert) {
+                        Alert(title: Text("Important message"), message: Text(myAlert), dismissButton: .default(Text("Got it!")))
+                    }
             
         }
     }
