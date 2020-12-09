@@ -13,7 +13,7 @@ struct memoryGame: View {
     @State var model = ["🎅🏻", "🎅🏻", "🤶🏾", "🤶🏾", "🎄", "🎄", "❄️", "❄️", "☃️", "☃️", "🦌", "🦌"]
     @State var tapCounter: Int = 0
     
-    @State var matchedCards = [Int]()
+    @State var matchedCards = [String]()
     
     @State var currentCard: String = ""
     
@@ -21,7 +21,7 @@ struct memoryGame: View {
     
     @State var myCard = [card](repeating: card(value: ""), count: 12)
     
-    @State var cardsOpened: Int = 0
+    @State var openedCards: Int = 0
     
     struct card: View {
         var value: String //Hidden symbol
@@ -40,35 +40,37 @@ struct memoryGame: View {
     }
     
     func cardTap(number: Int) {
-        cardsOpened += 1
-        
-        if (cardsOpened == 1) {
+        openedCards += 1
+        if (openedCards == 1) {
             currentCard = myCard[number].value
             myCard[number].content = myCard[number].value
-        } else if (cardsOpened == 2) {
-            if (currentCard == myCard[number].value)
-            {
-                myCard[number].content = myCard[number].value
+        } else if (openedCards == 2) {
+            myCard[number].content = myCard[number].value
+            if (currentCard == myCard[number].value) {
+                matchedCards.append(myCard[number].value)
             }
-        } else if (cardsOpened == 3) {
+        } else if (openedCards == 3) {
             currentCard = myCard[number].value
             hideAll()
             myCard[number].content = myCard[number].value
-            cardsOpened += 1
+            openedCards += 1
         }
     }
     
     func hideAll () {
-        cardsOpened = 0
+        openedCards = 0
         for i in 0...11 {
-            myCard[i].content = "❔"
+            if !(matchedCards.contains(myCard[i].value)) {
+                myCard[i].content = "❔"
+            }
         }
     }
     
     func startGame() {
         model = model.shuffled()
+        matchedCards.removeAll()
         hideAll()
-        cardsOpened = 0
+        openedCards = 0
         tapCounter = 0
         for i in 0...11 {
             myCard[i].content = "❔"
